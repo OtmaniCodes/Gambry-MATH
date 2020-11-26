@@ -1,0 +1,25 @@
+#: kivy 1.11.1
+#: include screens/starting.kv
+#: include screens/home.kv
+#: include screens/normal.kv
+#: include screens/advanced.kv
+
+
+FloatLayout:
+
+    ScreenManager:
+        id: screen_manager
+        Starting:
+            name: "starting_page"
+            id: start
+        Home:
+            name: "home_page"
+            id: home
+        Normal:
+            name: "normal_calculator"
+            id: normal
+        Advanced:
+            name: "advanced_calculator"
+            id: advanced
+
+ 

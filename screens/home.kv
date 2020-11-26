@@ -1,0 +1,63 @@
+<Btn@MDRoundFlatIconButton>:
+    md_bg_color: [1,1,1,1]
+    text_color: [0,0,0,1]
+    font_size: 20
+    theme_text_color: 'Custom'
+    halin: 'center'
+
+
+<Home>:
+    canvas.before:
+        Color:
+            rgba: rgba('#009DFF')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    MDToolbar:
+        title: 'Home'
+        md_bg_color: [0,0,0,1]
+        pos_hint: {'top':1}
+        size_hint_y: .08
+        elevation: 10
+
+
+    MDLabel:
+        text: '[color=#FF0000]G[/color]ambry MATH'
+        size_hint: 1, .2
+        markup: True
+        pos_hint: {'top': .96}
+        halign: 'center'
+        height: self.texture_size[1]
+        color: 0,0,0,1
+        font_style: 'H4'
+        bold: True
+        font_size: 40
+
+    BoxLayout:
+        size_hint: 1, .3
+        pos_hint: {'x':0, 'top':.79}
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        
+        Btn:
+            id: b1
+            text: 'Normal Calculator'
+            size_hint: 1, .1
+            icon: 'calculator-variant'
+            on_press:
+                app.change_color('normal')
+            on_release:
+                app.change_to_normal()
+
+        Btn:
+            id: b2
+            text: 'Advanced Calculator'
+            size_hint: 1, .1
+            icon: 'calculator'
+            on_press:
+                app.change_color('advanced')
+            on_release:
+                app.change_to_advanced()

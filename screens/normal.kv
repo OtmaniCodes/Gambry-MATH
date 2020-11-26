@@ -1,0 +1,275 @@
+#: import utils kivy.utils
+
+<Num@MDRaisedButton>:
+    md_bg_color: [0 ,0.6156862745 ,1 ,1]
+    bold: True
+    font_style: 'H5'
+    font_size: 20
+<Bt@Button>:
+    font_size: 20
+    bold: True
+    background_normal: ''
+    background_color: utils.get_color_from_hex('#FFFFFF')
+    color: [0,0,0,1]
+
+<Calc@FloatLayout>:
+    b1: b1
+    b2: b2
+    b3: b3
+    b4: b4
+    txt: txt
+    canvas.before:
+        Color:
+            rgba: rgba('#FFFFFF')
+        Rectangle:
+            size: root.width*(58.33333333/100), root.height*(52.65625/100)
+            pos: self.pos
+
+        Color:
+            rgba: rgba('#FFFFFF')
+        Rectangle:
+            size: root.width*(42.1875/100), root.height*(29.21875/100)
+            pos: root.width-(root.width*(42.1875/100)), self.y
+
+        Color:
+            rgba: rgba('#FFFFFF')
+        Ellipse:
+            size: root.width*(83.33333333/100), root.height*(46.875/100)
+            pos: root.width-(root.width*(83.33333333/100)), root.height*(5.78125/100)
+    
+    FloatLayout:
+        size_hint_x: (58/100)
+        size_hint_y: (43.5/100)
+        pos_hint: {'top':(43.5/100)+0.02}
+        FloatLayout:
+            size_hint: 1, (25/139)
+            pos_hint: {'top':1}
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint:{'x':(750/101)/100, 'top':1}
+                text: '7'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'7')
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint:{'x':((750/101)/100)+(22.60726073/100)+(13/101), 'top':1}
+                text: '8'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'8')             
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint:{'right':1, 'top':1}
+                text: '9'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1] 
+                on_release:
+                    txt.text= (txt.text+'9')
+        FloatLayout:
+            size_hint: 1, (25/139)
+            pos_hint: {'top':1-((25/139)+(26/278))}
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'x':(750/101)/100, 'top':1}
+                text: '4'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'4')
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'x':((750/101)/100)+(22.60726073/100)+(13/101), 'top':1}
+                text: '5'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'5')
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'right':1, 'top':1}
+                text: '6'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'6')
+        FloatLayout:
+            size_hint: 1, (25/139)
+            pos_hint: {'top':(25/139)*2+(26/278)}
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'x':(750/101)/100, 'top':1}
+                text: '1'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'1')
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'x':((750/101)/100)+(22.60726073/100)+(13/101), 'top':1}
+                text: '2'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'2')
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'right':1, 'top':1}
+                text: '3'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'3')
+        FloatLayout:
+            size_hint: 1, (25/139)
+            pos_hint: {'top':(25/139)}
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'x':(750/101)/100, 'top':1}
+                text: '.'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= txt.text+'.' if txt.text.count('.') == 0 else txt.text
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'x':((750/101)/100)+(22.60726073/100)+(13/101), 'top':1}
+                text: '0'
+                theme_text_color: 'Custom'
+                text_color: [0,0,0,1]
+                on_release:
+                    txt.text= (txt.text+'0')
+            Num:
+                size_hint: (22.60726073/100), 1
+                pos_hint: {'right':1, 'top':1}
+                text: '='
+                md_bg_color: [0,0,0,1]
+                theme_text_color: 'Custom'
+                text_color: [0 ,0.6156862745 ,1 ,1]
+                on_press:
+                    app.get_res(txt.text, txt, 'n') if txt.text != '' else app.errors('enter the operation first!')
+    
+                on_release:
+                    b1.background_color= utils.get_color_from_hex('#FFFFFF')
+                    b2.background_color= utils.get_color_from_hex('#FFFFFF')
+                    b3.background_color= utils.get_color_from_hex('#FFFFFF')
+                    b4.background_color= utils.get_color_from_hex('#FFFFFF')
+    
+    Num:
+        text: 'Clear'
+        size_hint: .35, .078
+        pos_hint: {'right':.973, 'top':.0955}
+        md_bg_color: [0,0,0,1]
+        theme_text_color: 'Custom'
+        text_color: [1,0,0,1]
+        on_release:
+            txt.text= ''
+            txt.hint_text= 'first number...'
+    GridLayout:
+
+        canvas.before:
+            Color:
+                rgba: [0,0,0,1]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        spacing: 3
+        size_hint: .35, .2
+        pos_hint: {'right':.973, 'top':.34}
+        cols: 2
+        rows: 2
+        Bt:
+            id: b1
+            text: '+'
+            on_press:
+                app.operate(txt.text, self.text) if txt.text != '' else print('the textbox is empty')
+                self.background_color=[.8,.8,.8,.8]
+                txt.hint_text= 'second number...'
+            on_release:
+                txt.text= ''
+        Bt:
+            id: b2
+            text: '-'
+            on_press:
+                app.operate(txt.text, self.text) if txt.text != '' else print('the textbox is empty')
+                self.background_color=[.8,.8,.8,.8]
+                txt.hint_text= 'second number...'
+            on_release:
+                txt.text= ''
+        Bt:
+            id: b3
+            text: '/'
+            on_press:
+                app.operate(txt.text, self.text) if txt.text != '' else print('the textbox is empty')
+                self.background_color=[.8,.8,.8,.8]
+                txt.hint_text= 'second number...'
+            on_release:
+                txt.text= ''
+        Bt:
+            id: b4
+            text: 'x'
+            on_press:
+                app.operate(txt.text, self.text) if txt.text != '' else print('the textbox is empty')
+                self.background_color=[.8,.8,.8,.8]
+                txt.hint_text= 'second number...'
+            on_release:
+                txt.text= ''
+
+    MDRoundFlatButton:
+        text: 'Delete'
+        size_hint: .22, .078
+        pos_hint: {'x':.623, 'top':(43.5/100)+0.02}
+        md_bg_color: [0,0,0,1]
+        theme_text_color: 'Custom'
+        text_color: [1,0,0,1]
+        on_release:
+            txt.text= txt.text[:-1]
+            txt.hint_text= 'first number...' 
+    FloatLayout:
+        size_hint: (110.4/root.width), 1
+        pos_hint: {'x':root.width-(110.4/root.width), 'top': .4}
+        canvas.after:
+            Color:
+                rgba: [0,1,0,.5]
+            Rectangle:
+                size: self.size
+                pos: self.pos
+    MDToolbar:
+        title: 'Normal Calculator'
+        md_bg_color: [0,0,0,1]
+        pos_hint: {'top':1}
+        size_hint_y: .08
+        elevation: 10
+        left_action_items: [['arrow-left', lambda x: app.go_to_home(txt)]]
+
+    MDTextFieldRect:
+        id: txt
+        size_hint: (227/240), (53/640)
+        pos_hint: {'x':(49/1800) ,'top':1-(72/640)}
+        multiline: False
+        align: 'center'
+        font_size: '25sp'
+        bold: True
+        #disabled: True
+        readonly: True
+        font_style: 'Roboto'
+        hint_text: 'first number...'
+        hint_text_color: [0,0,0,1]
+        background_normal: ""
+        background_color: [1,1,1,1]
+
+
+<Normal>:
+    canvas.before:
+        Color:
+            rgba: rgba('#009DFF')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+
+
+    Calc:
+        pos_hint: {'top':1}

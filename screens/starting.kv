@@ -1,0 +1,111 @@
+<Slide1@FloatLayout>:
+   
+    canvas.after:
+        Color:
+            rgba: rgba('#FFFFFF')
+        Rectangle:
+            size: self.size[0], self.height/2.882882883
+            pos: self.pos
+        
+        Color:
+            rgba: rgba('#FFFFFF')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos: (-(root.width/3.5))+((root.width/3.5)/2), (self.pos[1]+((root.height/6.588235294)*2.22))-((root.height/6.588235294)/2)
+
+        Color:
+            rgba: rgba('#FFFFFF')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos: (root.width/3.5)/2,  (self.pos[1]+((root.height/6.588235294)*2.22))-((root.height/6.588235294)/2)
+
+        Color:
+            rgba: rgba('#FFFFFF')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos:  (root.width/3.5)*2-((root.width/3.5)/2) , (self.pos[1]+((root.height/6.588235294)*2.22))-((root.height/6.588235294)/2)
+
+        Color:
+            rgba: rgba('#FFFFFF')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos: root.width-(root.width/3.5), (self.pos[1]+((root.height/6.588235294)*2.22))-((root.height/6.588235294)/2)
+
+
+<Slide2@FloatLayout>:
+
+    canvas.after:
+        Color:
+            rgba: rgba('#000000')
+        Rectangle:
+            size: self.size[0], self.height/2.882882883
+            pos: self.pos[0], self.pos[1]+(root.height/6.588235294)
+        
+        Color:
+            rgba: rgba('#000000')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos: (-(root.width/3.5))+((root.width/3.5)/2)+((root.width/3.5)/2), (self.pos[1]+(root.height/6.588235294)/2)
+
+        Color:
+            rgba: rgba('#000000')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos: ((root.width/3.5)/2)+((root.width/3.5)/2),  (self.pos[1]+(root.height/6.588235294)/2)
+
+        Color:
+            rgba: rgba('#000000')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos:  (root.width/3.5)*2-((root.width/3.5)/2) +((root.width/3.5)/2), (self.pos[1]+(root.height/6.588235294)/2)
+
+        Color:
+            rgba: rgba('#000000')
+        Ellipse:
+            size: root.width/3.5, root.height/6.588235294
+            pos: root.width-(root.width/3.5)+((root.width/3.5)/2), (self.pos[1]+(root.height/6.588235294)/2)
+
+
+<Starting>:
+    slide_one: slide_one
+    canvas.before:
+        Color:
+            rgba: rgba('#009DFF')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
+    Slide1:
+        id: slide_one
+        yy: 0
+        size_hint: 1, 1
+        pos_hint: {'top':self.yy}
+
+    Label:
+        id: me
+        text: 'created by: ahmed el otmani'.title()
+        size_hint: None, None
+        size: self.texture_size
+        pos_hint: {'y':0.011, 'center_x':0.5}
+        font: 50
+        font_style: 'arial'
+        o: 0
+        color: [0,0,0,self.o] 
+
+    MDLabel:
+        id: lbl00
+        text: '[color=#FF0000]G[/color]ambry MATH'
+        markup: True
+        halign: 'center'
+        font_style: 'H4'
+        bold:True
+        op: 0
+        bold: False
+        color: [0,0,0,self.op]
+        underline: False
+
+    Slide2:
+        id: slide_two
+        yy: 1.5
+        size_hint: 1, 1
+        pos_hint: {'y':self.yy}   
