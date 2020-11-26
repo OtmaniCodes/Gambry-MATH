@@ -11,6 +11,7 @@ from kivy.uix.screenmanager import (Screen, ScreenManager, FadeTransition,
 from kivymd.toast import toast
 import math
 
+
 class Operations:
     def __init__(self, num1=0, num2=0, ope=''):
         self.num1= float(num1)
@@ -42,10 +43,13 @@ class Operations:
 
 class Starting(Screen):
     pass
+
 class Home(Screen):
     pass
+
 class Normal(Screen):
     pass
+
 class Advanced(Screen):
     pass
  
@@ -63,8 +67,6 @@ class MainApp(MDApp):
         Clock.schedule_once(self.two, 1)
         Clock.schedule_once(self.three, 1)
         Clock.schedule_once(self.change_to_home, 9)
-
-
 
     #Animation:
     def one(self, *args):
@@ -109,9 +111,9 @@ class MainApp(MDApp):
         else:
             self.change_to_home()
             txt.text= ''
+
     #changing bg and fg colors:
     def change_color(self, chosen_btn):
-        
         if chosen_btn == 'normal':
             item= self.root.ids.home.ids.b1
         elif chosen_btn == 'advanced': 
@@ -120,11 +122,11 @@ class MainApp(MDApp):
             item= self.root.ids.home.ids.b3
         elif chosen_btn == 'about': 
             item= self.root.ids.home.ids.b4
-
         an= Animation(md_bg_color= [0,0,0,1], text_color= [1,1,1,1], d= 0.1)
         an+= Animation(md_bg_color= [1,1,1,1], text_color= [0,0,0,1], d= 0.1)
         an.start(item)
-    #doing the logic:
+
+    #implementing the logic:
     def operate(self, num1, ope):
         self.num1= num1
         self.ope= ope
@@ -139,11 +141,13 @@ class MainApp(MDApp):
             txt.text= self.res[:self.res.find('.')]
         else:
             txt.text= str(self.res)
+
     def make_it_n(self, textt, txt2):
         txt2.text= str(-int(textt))
 
     def powerten2(self, txt2, txt):
         txt2.text= str(int(txt)*(10**2))
+        
     def powerten3(self, txt2, txt):
         txt2.text= str(int(txt)*(10**3))
     
